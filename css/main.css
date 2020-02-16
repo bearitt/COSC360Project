@@ -1,0 +1,43 @@
+/*
+Colour scheme:
+Background: #FFFFFF
+Navbar: #D4E4BC
+Gradient for jumbotron: #CE8147 #96ACB7 #283845 #D4E4BC
+Accents: #CE8147
+Unused: #F6F4F3
+*/
+
+body {
+  background-color: #CE8147;
+  width:100%;
+}
+.card {
+  margin: auto;
+}
+
+.jumbotron-fluid {
+  background: linear-gradient(-45deg, #F6F4F3 0 35%, #283845 0 50%,
+       #96ACB7 0 65%, #CE8147 0 80%, #D4E4BC 0 95%, #F6F4F3 0);
+  background-size: 100% 4em;
+  background-repeat: no-repeat;
+  background-color:#F6F4F3;
+  color:#283845;
+  padding-top:4em;
+  margin-top:3.5em;
+  padding-bottom: 2em;
+  width:100%;
+}
+
+.sticky-top {
+  padding: 4em 1em 4em 1em;
+  background: linear-gradient(-45deg, #F6F4F3 0 35%, #283845 0 50%,
+       #96ACB7 0 65%, #CE8147 0 80%, #D4E4BC 0 95%, #F6F4F3 0);
+  background-size: 100% 3.5em;
+  background-repeat: no-repeat;
+  background-color:#F6F4F3;
+}
+
+.sticky-top .btn {
+  width:8em;
+  margin:0.25em 0 0.25em 0;
+}
