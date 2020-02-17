@@ -63,4 +63,7 @@ body {
 .footer-jumbo {
   margin-bottom: 0;
   padding-bottom: 0em;
+  background-size: 100% 2em;
+  padding-top:2em;
+  margin-top:2em;
 }
