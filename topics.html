@@ -10,97 +10,112 @@
     <title>Topics</title>
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-      <a class="navbar-brand" href="index.html">Forum Name</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse"
-        data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"
-        aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="topics.html">Topics</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="features.html">Featured Stories</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
-            role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Account
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item" href="login.html">Login</a>
-              <a class="dropdown-item" href="signup.html">Create an account</a>
-            </div>
-          </li>
-        </ul>
-        <!--TODO:fix search bar to justify right; check out The Cellar Door -->
-        <form class="form-inline my-2 my-lg-0" method="get" action="stories.html">
-          <input class="form-control mr-sm-2" type="search" placeholder="Search"
-            aria-label="Search" name="topicSearch">
-          <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
+    <div class="container-fluid">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <a class="navbar-brand" href="index.html">Forum Name</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse"
+          data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"
+          aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="topics.html">Topics</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="features.html">Featured Stories</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
+              role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Account
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="login.html">Login</a>
+                <a class="dropdown-item" href="signup.html">Create an account</a>
+              </div>
+            </li>
+          </ul>
+          <!--TODO:fix search bar to justify right; check out The Cellar Door -->
+          <form class="form-inline my-2 my-lg-0" method="get" action="stories.html">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search"
+              aria-label="Search" name="topicSearch">
+            <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
+          </form>
+        </div>
+      </nav>
+    <div class="row">
+      <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+          <h1 class="display-4">Topics</h1>
+          <p class="lead">This is a list of topics</p>
+        </div>
       </div>
-    </nav>
-  <div class="row">
-    <div class="jumbotron jumbotron-fluid">
-      <div class="container">
-        <h1 class="display-4">Topics</h1>
-        <p class="lead">This is a list of topics</p>
+    </div>
+
+    <div class="row">
+      <!--spacer left margin-->
+      <div class="col-sm-1">
+      </div>
+      <!--Topic cards-->
+      <div class="col-sm-8">
+        <div class="card-columns">
+          <div class="card">
+            <img class="card-img-top" src="images/pascal.jpg" alt="Pascal Siakam" />
+            <div class="card-body text-center">
+              <h5 class="card-title">Sports</h5>
+              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+              <a href="#" class="btn btn-primary stretched-link">Visit</a>
+            </div>
+          </div>
+          <div class="card">
+            <img class="card-img-top" src="images/josh.jpeg" alt="Josh Homme" />
+            <div class="card-body text-center">
+              <h5 class="card-title">Music</h5>
+              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+              <a href="#" class="btn btn-primary stretched-link">Visit</a>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-body text-center">
+              <h5 class="card-title">Video Games</h5>
+              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+              <a href="#" class="btn btn-primary stretched-link">Visit</a>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-body text-center">
+              <h5 class="card-title">Wine</h5>
+              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+              <a href="#" class="btn btn-primary stretched-link">Visit</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--spacer right margin-->
+      <div class="col-sm-1">
       </div>
     </div>
   </div>
-
-  <div class="row">
-    <!--spacer left margin-->
-    <div class="col-sm-1">
-    </div>
-    <!--Topic cards-->
-    <div class="col-sm-8">
-      <div class="card-columns">
-        <div class="card">
-          <img class="card-img-top" src="images/pascal.jpg" alt="Pascal Siakam" />
-          <div class="card-body text-center">
-            <h5 class="card-title">Sports</h5>
-            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-            <a href="#" class="btn btn-primary stretched-link">Visit</a>
-          </div>
+  <div class="jumbotron jumbotron-fluid footer-jumbo">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-6">
+            <p><small>Copyright &copy;Forumname 2020</small></p>
         </div>
-        <div class="card">
-          <img class="card-img-top" src="images/josh.jpeg" alt="Josh Homme" />
-          <div class="card-body text-center">
-            <h5 class="card-title">Music</h5>
-            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-            <a href="#" class="btn btn-primary stretched-link">Visit</a>
-          </div>
+        <div class="col-sm-3">
         </div>
-        <div class="card">
-          <div class="card-body text-center">
-            <h5 class="card-title">Video Games</h5>
-            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-            <a href="#" class="btn btn-primary stretched-link">Visit</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-body text-center">
-            <h5 class="card-title">Wine</h5>
-            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-            <a href="#" class="btn btn-primary stretched-link">Visit</a>
-          </div>
+        <div class="col-sm-3">
+          <a class="btn btn-secondary btn-sm" href="admin.php" role="button">Login for admin</a>
         </div>
       </div>
-    </div>
-    <!--spacer right margin-->
-    <div class="col-sm-1">
     </div>
   </div>
 </div>
-
     <!-- Bootstrap js dependencies -->
     <script src="js/jquery-3.4.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

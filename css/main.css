@@ -19,6 +19,10 @@ Changed Primary hover from #545b62 to #6D7D85 (border)
 Changed Success from #28a745 to #D4E4BC
 Changed Success hover from #218838 to #BDCCA7 (background)
 Changed Success hover from #1e7e34 to #AAB897 (border)
+
+Changed Light from #f8f9fa to #F6F4F3
+Changed Light hover from #e2e6ea to #E6F4F3 (background)
+Changed Light hover from #dae0e5 to #EFF4F3 (border)
 */
 
 body {
@@ -26,7 +30,7 @@ body {
   width:100%;
 }
 .card {
-  margin: auto;
+  margin: 0.5em 1em 0.5em 1em;
 }
 
 .jumbotron-fluid {
@@ -54,4 +58,9 @@ body {
 .sticky-top .btn {
   width:8em;
   margin:0.25em 0 0.25em 0;
+}
+
+.footer-jumbo {
+  margin-bottom: 0;
+  padding-bottom: 0em;
 }
