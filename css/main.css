@@ -5,6 +5,20 @@ Navbar: #D4E4BC
 Gradient for jumbotron: #CE8147 #96ACB7 #283845 #D4E4BC
 Accents: #CE8147
 Unused: #F6F4F3
+
+Modifications made to Bootstrap:
+******************************************************
+Changed Primary from #007bff to #283845
+Changed Primary hover from #0069d9 to #314454 (background)
+Changed Primary hover from #0062cc to #2C3E4D (border)
+
+Changed Secondary from #6c757d to #96ACB7
+Changed Primary hover from #5a6268 to #7B8D96 (background)
+Changed Primary hover from #545b62 to #6D7D85 (border)
+
+Changed Success from #28a745 to #D4E4BC
+Changed Success hover from #218838 to #BDCCA7 (background)
+Changed Success hover from #1e7e34 to #AAB897 (border)
 */
 
 body {
