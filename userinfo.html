@@ -40,7 +40,6 @@
             </div>
           </li>
         </ul>
-        <!--TODO:fix search bar to justify right; check out The Cellar Door -->
         <form class="form-inline my-2 my-lg-0" method="get" action="stories.html">
           <input class="form-control mr-sm-2" type="search" placeholder="Search"
             aria-label="Search" name="topicSearch">
@@ -52,46 +51,16 @@
 
 <div class="jumbotron jumbotron-fluid">
   <div class="container">
-    <h1 class="display-4">Wine topic</h1>
-    <p class="lead">This is an example of what a topic page would look like</p>
+    <h1 class="display-4">User info</h1>
+    <p class="lead">View and edit info for this_is_a_real_username</p>
   </div>
 </div>
 
 <div class="container">
   <div class="row">
     <div class="col-sm-9">
-      <!--Sort bar -->
-      <div class="text-enter-container sortbar">
-        <!--Change action when coding backend -->
-        <form class="form-inline" name="sortbar" method="post" action="topic.php">
-          <legend>Sort stories</legend>
-          <div class="form-group">
-            <label for="lastPost" class="mr-sm-2">Last post</label>
-            <select class="form-control mb-2 mr-sm-2" id="lastPost">
-              <option>Select:</option>
-              <option>Newest to oldest</option>
-              <option>Oldest to newest</option>
-            </select>
-            <label for="firstPost" class="mr-sm-2">First post</label>
-            <select class="form-control mb-2 mr-sm-2" id="firstPost">
-              <option>Select:</option>
-              <option>Newest to oldest</option>
-              <option>Oldest to newest</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="popularity" class="mr-sm-2">Popularity</label>
-            <select class="form-control mb-2 mr-sm-2" id="date">
-              <option>Select:</option>
-              <option>Most to least</option>
-              <option>Least to most</option>
-            </select>
-            <button type="submit" class="btn btn-primary" onclick="return validateLogin()">Submit</button>
-          </div>
-
-        </form>
-      </div>
       <!--Featured stories -->
+      <h2 class="featured">Featured stories</h2>
       <div class="card">
         <div class="card-header">
           Story 1
@@ -147,13 +116,13 @@
     </div>
     <div class="col-sm-3">
       <!--Topics sidebar -->
-      <div class="sticky-top">
+      <div class="sticky-top sidebar-right">
         <div class="col-sm-3">
           <h2>Topics</h2>
-          <a class="btn btn-secondary btn-lg" href="#" role="button">Sports</a>
-          <a class="btn btn-secondary btn-lg" href="#" role="button">Music</a>
-          <a class="btn btn-secondary btn-lg" href="#" role="button">Video Games</a>
-          <a class="btn btn-secondary btn-lg" href="#" role="button">Wine</a>
+          <a class="btn btn-secondary btn-lg" href="topic.html" role="button">Sports</a>
+          <a class="btn btn-secondary btn-lg" href="topic.html" role="button">Music</a>
+          <a class="btn btn-secondary btn-lg" href="topic.html" role="button">Video Games</a>
+          <a class="btn btn-secondary btn-lg" href="topic.html" role="button">Wine</a>
         </div>
       </div>
     </div>

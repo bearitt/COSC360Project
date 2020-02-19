@@ -88,6 +88,10 @@ body {
   border-radius: 0.75em;
 }
 
-.form-group {
-  margin-right:0.5em;
+.list-topics > li:nth-child(odd) {
+  background-color: #F6F4F3;
+}
+
+.list-topics > li:nth-child(even) {
+  background-color: #96ACB7;
 }
