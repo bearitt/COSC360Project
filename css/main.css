@@ -4,7 +4,7 @@ Background: #FFFFFF
 Navbar: #D4E4BC
 Gradient for jumbotron: #CE8147 #96ACB7 #283845 #D4E4BC
 Accents: #CE8147
-Unused: #F6F4F3
+Navbar: #F6F4F3
 
 Modifications made to Bootstrap:
 ******************************************************
@@ -63,4 +63,20 @@ body {
 .footer-jumbo {
   margin-bottom: 0;
   padding-bottom: 0em;
+}
+.text-enter-container {
+  margin-bottom: 10em;
+  background-color: #D4E4BC;
+  padding: 1em;
+  border-radius: 0.75em;
+}
+.featured {
+  padding-left: 1.5em;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  margin-right: 1.5em;
+  width:100%;
+  background-color: #D4E4BC;
+  color: #283845;
+  border-radius:0.5em;
 }
