@@ -60,6 +60,38 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-9">
+      <!--Sort bar -->
+      <div class="text-enter-container sortbar">
+        <!--Change action when coding backend -->
+        <form class="form-inline" name="sortbar" method="post" action="topic.php">
+          <legend>Sort stories</legend>
+          <div class="form-group">
+            <label for="lastPost">Last post&nbsp;</label>
+            <select class="form-control" id="lastPost">
+              <option>Select:</option>
+              <option>Newest to oldest</option>
+              <option>Oldest to newest</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="firstPost">First post&nbsp;</label>
+            <select class="form-control" id="firstPost">
+              <option>Select:</option>
+              <option>Newest to oldest</option>
+              <option>Oldest to newest</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="popularity">Popularity&nbsp;</label>
+            <select class="form-control" id="date">
+              <option>Select:</option>
+              <option>Most to least</option>
+              <option>Least to most</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary" onclick="return validateLogin()">Submit</button>
+        </form>
+      </div>
       <!--Featured stories -->
       <div class="card">
         <div class="card-header">

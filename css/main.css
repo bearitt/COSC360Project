@@ -64,7 +64,7 @@ body {
   margin-bottom: 0;
   padding-bottom: 0em;
 }
-.text-enter-container {
+.login {
   margin-bottom: 10em;
   background-color: #D4E4BC;
   padding: 1em;
@@ -79,4 +79,15 @@ body {
   background-color: #D4E4BC;
   color: #283845;
   border-radius:0.5em;
+}
+
+.sortbar {
+  margin-bottom: 2em;
+  background-color: #D4E4BC;
+  padding: 1em;
+  border-radius: 0.75em;
+}
+
+.form-group {
+  margin-right:0.5em;
 }
