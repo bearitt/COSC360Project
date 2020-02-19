@@ -59,71 +59,37 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-9">
-      <!--Featured stories -->
-      <h2 class="featured">Featured stories</h2>
-      <div class="card">
-        <div class="card-header">
-          Story 1
-        </div>
-        <div class="card-body">
-          <h5 class="card-title">Very interesting story</h5>
-          <p class="card-text">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-          </p>
-          <a href="story.html" class="btn btn-primary">Visit story</a>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-header">
-          Story 2
-        </div>
-        <div class="card-body">
-          <h5 class="card-title">Very interesting story</h5>
-          <p class="card-text">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-          </p>
-          <a href="story.html" class="btn btn-primary">Visit story</a>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-header">
-          Story 3
-        </div>
-        <div class="card-body">
-          <h5 class="card-title">Very interesting story</h5>
-          <p class="card-text">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-          </p>
-          <a href="story.html" class="btn btn-primary">Visit story</a>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-header">
-          Story 4
-        </div>
-        <div class="card-body">
-          <h5 class="card-title">Very interesting story</h5>
-          <p class="card-text">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-          </p>
-          <a href="story.html" class="btn btn-primary">Visit story</a>
-        </div>
-      </div>
-
-    </div>
-    <div class="col-sm-3">
-      <!--Topics sidebar -->
-      <div class="sticky-top sidebar-right">
-        <div class="col-sm-3">
-          <h2>Topics</h2>
-          <a class="btn btn-secondary btn-lg" href="topic.html" role="button">Sports</a>
-          <a class="btn btn-secondary btn-lg" href="topic.html" role="button">Music</a>
-          <a class="btn btn-secondary btn-lg" href="topic.html" role="button">Video Games</a>
-          <a class="btn btn-secondary btn-lg" href="topic.html" role="button">Wine</a>
-        </div>
+      <div class="text-enter-container login">
+        <form name="signup" method="post" onsubmit="return validateSignUp()" action="http://www.randyconnolly.com/tests/process.php">
+          <fieldset>
+            <legend>Edit User Info</legend>
+            <p>
+              <label>Username</label>
+              <input type="text" name="username" placeholder="this_is_a_real_username">
+            </p>
+            <p>
+              <label>First Name</label>
+              <input type="text" name="firstName" placeholder="Mary"/>
+            </p>
+            <p>
+              <label>Last Name</label>
+              <input type="text" name="lastName" placeholder="Hadalittlelamb"/>
+            </p>
+            <p>
+              <label>Email Address</label>
+              <input type="text" name="email" placeholder="fleeceaswhiteas@snow.ca"/>
+            </p>
+            <p>
+              <label>Password</label>
+              <input type="password" name="password" placeholder="***********">
+            </p>
+            <p>
+              <label>Confirm Password</label>
+              <input type="password" name="passwordConfirmed" placeholder="***********">
+            </p>
+            <p><input type="submit"></p>
+          </fieldset>
+        </form>
       </div>
     </div>
   </div>
@@ -142,7 +108,8 @@
     </div>
   </div>
 </div>
-
+    <!--JS validation-->
+    <script src="js/validate.js"></script>
     <!-- Bootstrap js dependencies -->
     <script src="js/jquery-3.4.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
