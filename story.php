@@ -111,10 +111,10 @@
       <div class="sticky-top sidebar-right">
         <div class="col-sm-3">
           <h2>Topics</h2>
-          <a class="btn btn-secondary btn-lg" href="topic.html" role="button">Sports</a>
-          <a class="btn btn-secondary btn-lg" href="topic.html" role="button">Music</a>
-          <a class="btn btn-secondary btn-lg" href="topic.html" role="button">Video Games</a>
-          <a class="btn btn-secondary btn-lg" href="topic.html" role="button">Wine</a>
+          <a class="btn btn-secondary btn-lg" href="topic.php" role="button">Sports</a>
+          <a class="btn btn-secondary btn-lg" href="topic.php" role="button">Music</a>
+          <a class="btn btn-secondary btn-lg" href="topic.php" role="button">Video Games</a>
+          <a class="btn btn-secondary btn-lg" href="topic.php" role="button">Wine</a>
         </div>
       </div>
     </div>

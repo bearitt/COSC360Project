@@ -37,7 +37,7 @@
           <p class="card-text">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
           </p>
-          <a href="story.html" class="btn btn-primary">Visit story</a>
+          <a href="story.php" class="btn btn-primary">Visit story</a>
         </div>
       </div>
 
@@ -50,7 +50,7 @@
           <p class="card-text">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
           </p>
-          <a href="story.html" class="btn btn-primary">Visit story</a>
+          <a href="story.php" class="btn btn-primary">Visit story</a>
         </div>
       </div>
 
@@ -63,7 +63,7 @@
           <p class="card-text">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
           </p>
-          <a href="story.html" class="btn btn-primary">Visit story</a>
+          <a href="story.php" class="btn btn-primary">Visit story</a>
         </div>
       </div>
 
@@ -76,7 +76,7 @@
           <p class="card-text">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
           </p>
-          <a href="story.html" class="btn btn-primary">Visit story</a>
+          <a href="story.php" class="btn btn-primary">Visit story</a>
         </div>
       </div>
 
@@ -86,10 +86,10 @@
       <div class="sticky-top sidebar-right">
         <div class="col-sm-3">
           <h2>Topics</h2>
-          <a class="btn btn-secondary btn-lg" href="topic.html" role="button">Sports</a>
-          <a class="btn btn-secondary btn-lg" href="topic.html" role="button">Music</a>
-          <a class="btn btn-secondary btn-lg" href="topic.html" role="button">Video Games</a>
-          <a class="btn btn-secondary btn-lg" href="topic.html" role="button">Wine</a>
+          <a class="btn btn-secondary btn-lg" href="topic.php" role="button">Sports</a>
+          <a class="btn btn-secondary btn-lg" href="topic.php" role="button">Music</a>
+          <a class="btn btn-secondary btn-lg" href="topic.php" role="button">Video Games</a>
+          <a class="btn btn-secondary btn-lg" href="topic.php" role="button">Wine</a>
         </div>
       </div>
     </div>

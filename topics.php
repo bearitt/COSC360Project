@@ -34,7 +34,7 @@
             <div class="card-body text-center">
               <h5 class="card-title">Sports</h5>
               <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-              <a href="topic.html" class="btn btn-primary stretched-link">Visit</a>
+              <a href="topic.php" class="btn btn-primary stretched-link">Visit</a>
             </div>
           </div>
           <div class="card">
@@ -42,21 +42,21 @@
             <div class="card-body text-center">
               <h5 class="card-title">Music</h5>
               <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-              <a href="topic.html" class="btn btn-primary stretched-link">Visit</a>
+              <a href="topic.php" class="btn btn-primary stretched-link">Visit</a>
             </div>
           </div>
           <div class="card">
             <div class="card-body text-center">
               <h5 class="card-title">Video Games</h5>
               <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-              <a href="topic.html" class="btn btn-primary stretched-link">Visit</a>
+              <a href="topic.php" class="btn btn-primary stretched-link">Visit</a>
             </div>
           </div>
           <div class="card">
             <div class="card-body text-center">
               <h5 class="card-title">Wine</h5>
               <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-              <a href="topic.html" class="btn btn-primary stretched-link">Visit</a>
+              <a href="topic.php" class="btn btn-primary stretched-link">Visit</a>
             </div>
           </div>
         </div>
