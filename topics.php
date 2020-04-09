@@ -11,7 +11,7 @@
   </head>
   <body>
     <?php
-      include 'navbar.php';
+      include 'include/navbar.php';
     ?>
     <div class="row">
       <div class="jumbotron jumbotron-fluid">
@@ -29,6 +29,9 @@
       <!--Topic cards-->
       <div class="col-sm-8">
         <div class="card-columns">
+          <?php
+          $
+          ?>
           <div class="card">
             <img class="card-img-top" src="images/pascal.jpg" alt="Pascal Siakam" />
             <div class="card-body text-center">
@@ -67,7 +70,7 @@
     </div>
   </div>
   <?php
-    include 'footer.php';
+    include 'include/footer.php';
   ?>
 </div>
     <!-- Bootstrap js dependencies -->

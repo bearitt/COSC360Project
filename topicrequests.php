@@ -12,7 +12,7 @@
   </head>
   <body>
     <?php
-      include 'navbar.php';
+      include 'include/navbar.php';
     ?>
 
     <div class="jumbotron jumbotron-fluid">
@@ -61,7 +61,7 @@
       </div>
     </div>
     <?php
-      include 'footer.php';
+      include 'include/footer.php';
     ?>
     <!-- Bootstrap js dependencies -->
     <script src="js/jquery-3.4.1.min.js"></script>
