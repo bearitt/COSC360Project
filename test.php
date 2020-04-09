@@ -10,9 +10,7 @@
   $result = $pdo->query($SQL);
 
   while($row = $result->fetch()) {
-    echo "<p>
-    <strong>Topic id: ".$row['topicID']." Topic name: ".$row['topicName']."</strong>
-    </p>";
+    echo "what up dog?";
     echo "<p>
     Description: ".$row['topicDesc']."
     </p>";
