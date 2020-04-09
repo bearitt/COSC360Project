@@ -19,6 +19,10 @@
   <div class="container">
     <h1 class="display-4">Log In</h1>
     <p class="lead">Log in to an existing account</p>
+    <?php
+      if(isset($SESSION['loginMessage']))
+        echo ("<p>" . $_SESSION['loginMessage'] . "</p>");
+     ?>
   </div>
 </div>
 <div class="container-fluid">
@@ -27,7 +31,7 @@
     </div>
     <div class="col-sm-6">
       <div class="text-enter-container login">
-        <form name="login" method="post" onsubmit="return validateLogIn()" action="http://www.randyconnolly.com/tests/process.php">
+        <form name="login" method="post" onsubmit="return validateLogIn()" action="validateLogin.php">
           <fieldset>
             <legend>Log In</legend>
             <p>
