@@ -43,7 +43,7 @@
           //print four random "Featured" stories
           $pdo = openConnection();
           $counter = 1;
-          $SQL = "SELECT * FROM story WHERE storyID = ?";
+          $SQL = "SELECT * FROM story s JOIN profile p ON s.userID=p.userID WHERE storyID = ?";
           $stmt = $pdo->prepare($SQL);
           $publishedStories = array();
           $nextStory = -1;
@@ -56,7 +56,7 @@
               echo "
               <div class=\"card\">
                 <div class=\"card-header\">
-                  Story ".$counter++."
+                  <img src=\"".$row['profilePhoto']."\" class=\"photo-profile\" />&nbsp;&nbsp;<strong>Author: </strong>".$row['userName']."
                 </div>
                 <div class=\"card-body\">
                   <h5 class=\"card-title\">".$row['storyName']."</h5>

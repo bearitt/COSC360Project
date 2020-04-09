@@ -23,7 +23,6 @@
     try{
       $pdo = openConnection();
       if(isset($_GET['id'])) {
-        $counter = 1;
         $topicId = $_GET['id'];
         $SQL = "SELECT * FROM topic WHERE topicID = ?";
         $stmt = $pdo->prepare($SQL);
@@ -85,16 +84,15 @@
       try{
         $pdo = openConnection();
         if(isset($_GET['id'])) {
-          $counter = 1;
           $topicId = $_GET['id'];
-          $SQL = "SELECT * FROM story WHERE topicID = ?";
+          $SQL = "SELECT * FROM story s JOIN profile p ON s.userID=p.userID WHERE topicID = ?";
           $stmt = $pdo->prepare($SQL);
           $stmt->execute([$topicId]);
           while($row = $stmt->fetch()) {
             echo "
             <div class=\"card\">
               <div class=\"card-header\">
-                Story ".$counter++."
+                <img src=\"".$row['profilePhoto']."\" class=\"photo-profile\" />&nbsp;&nbsp;<strong>Author: </strong>".$row['userName']."
               </div>
               <div class=\"card-body\">
                 <h5 class=\"card-title\">".$row['storyName']."</h5>
