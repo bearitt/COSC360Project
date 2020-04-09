@@ -117,6 +117,7 @@
               <label>Username</label>
               <input class="form-control" type="text" name="username"
               <?php
+                session_start();
                 if($loggedIn) {
                   echo "placeholder=\"".$_SESSION['authenticatedUser']."\"";
                 } else {
