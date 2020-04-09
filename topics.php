@@ -30,8 +30,30 @@
       <div class="col-sm-8">
         <div class="card-columns">
           <?php
-          $
+            include 'include/db_credentials.php';
+
+            try{
+              $pdo = openConnection();
+            } catch(PDOException $e) {
+              die($e->getMessage());
+            }
+            $SQL = "SELECT * FROM topic";
+            $result = $pdo->query($SQL);
+
+            while($row = $result->fetch()) {
+              echo "
+              <div class=\"card\">
+                <img class=\"card-img-top\" src=\"".$row['topicPicture']."\" alt=\"".$row['topicName']." Image\" />
+                <div class=\"card-body text-center\">
+                  <h5 class=\"card-title\">".$row['topicName']."</h5>
+                  <p class=\"card-text\">".$row['topicDesc']."</p>
+                  <a href=\"topic.php\" class=\"btn btn-primary stretched-link\">Visit</a>
+                </div>
+              </div>
+              ";
+            }
           ?>
+          <!--
           <div class="card">
             <img class="card-img-top" src="images/pascal.jpg" alt="Pascal Siakam" />
             <div class="card-body text-center">
@@ -40,28 +62,7 @@
               <a href="topic.php" class="btn btn-primary stretched-link">Visit</a>
             </div>
           </div>
-          <div class="card">
-            <img class="card-img-top" src="images/josh.jpeg" alt="Josh Homme" />
-            <div class="card-body text-center">
-              <h5 class="card-title">Music</h5>
-              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-              <a href="topic.php" class="btn btn-primary stretched-link">Visit</a>
-            </div>
-          </div>
-          <div class="card">
-            <div class="card-body text-center">
-              <h5 class="card-title">Video Games</h5>
-              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-              <a href="topic.php" class="btn btn-primary stretched-link">Visit</a>
-            </div>
-          </div>
-          <div class="card">
-            <div class="card-body text-center">
-              <h5 class="card-title">Wine</h5>
-              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-              <a href="topic.php" class="btn btn-primary stretched-link">Visit</a>
-            </div>
-          </div>
+-->
         </div>
       </div>
       <!--spacer right margin-->
