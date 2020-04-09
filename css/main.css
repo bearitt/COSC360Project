@@ -100,3 +100,9 @@ body {
   background-color: #96ACB7;
   border-radius: 0.75em;
 }
+
+.photo-profile {
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+}

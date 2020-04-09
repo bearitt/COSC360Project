@@ -7,6 +7,7 @@ CREATE TABLE profile (
   userID INT PRIMARY KEY AUTO_INCREMENT,
   userName VARCHAR(100),
   emailAddress VARCHAR(100),
+  profilePhoto VARCHAR(255),
   password VARCHAR(100),
   isAdmin BIT
 );

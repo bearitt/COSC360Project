@@ -78,7 +78,7 @@
             while($row = $stmt->fetch()) {
               echo "
               <li class=\"list-group-item active\">
-                  <strong>Author: </strong>".$row['userName']."
+                  <img src=\"".$row['profilePhoto']."\" class=\"photo-profile\" />&nbsp;&nbsp;<strong>Author: </strong>".$row['userName']."
               </li>
               <li class=\"list-group-item\">
                 <p>
@@ -108,7 +108,7 @@
             while($row = $stmt->fetch()) {
               echo "
               <li class=\"list-group-item list-group-item-secondary\">
-                <small class=\"username\">user: ".$row['userName']."</small>
+                <img src=\"".$row['profilePhoto']."\" class=\"photo-profile\" />&nbsp;&nbsp;<small class=\"username\">user: ".$row['userName']."</small>
                 <p>
                   ".$row['commentContent']."
                 </p>
