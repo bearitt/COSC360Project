@@ -12,6 +12,7 @@
       $user = $_POST["username"];
 	     $pw = $_POST["password"];
 		     $retStr = null;
+         $_SESSION['isAdmin'] = false;
 
          if ($user == null || $pw == null)
 			      return null;

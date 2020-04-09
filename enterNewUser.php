@@ -27,6 +27,7 @@
           $sql = "INSERT INTO profile(userName, password, isAdmin, emailAddress)
                   VALUES (?,?,0,?)";
             $retStr = null;
+            $_SESSION['isAdmin'] = false;
 
 
             $pdo = openConnection();
