@@ -95,3 +95,8 @@ body {
 .list-topics > li:nth-child(even) {
   background-color: #96ACB7;
 }
+
+.table-search {
+  background-color: #96ACB7;
+  border-radius: 0.75em;
+}

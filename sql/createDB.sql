@@ -6,6 +6,7 @@ DROP TABLE profile;
 CREATE TABLE profile (
   userID INT PRIMARY KEY AUTO_INCREMENT,
   userName VARCHAR(100),
+  emailAddress VARCHAR(100),
   password VARCHAR(100),
   isAdmin BIT
 );
