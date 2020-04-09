@@ -3,9 +3,9 @@
   $authenticatedUser = validateLogin();
 
   if ($authenticatedUser != null)
-    header('Location: index.php'); //login success
+    header('Location: ../index.php'); //login success
   else
-    header('Location: login.php'); //failed login - back to login imagegrabscreen
+    header('Location: ../login.php'); //failed login - back to login imagegrabscreen
 
     function validateLogin()
     {
@@ -18,7 +18,7 @@
       if ((strlen($user) == 0) || (strlen($pw) == 0))
         return null;
 
-      include 'db_connection.php';
+      include 'db_credentials.php';
 
       try {
         $sql = "SELECT * FROM profile WHERE userName = ? AND password = ?";

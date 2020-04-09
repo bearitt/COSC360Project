@@ -32,7 +32,7 @@
     </div>
     <div class="col-sm-6">
       <div class="text-enter-container login">
-        <form name="login" method="post" onsubmit="return validateLogIn()" action="validateLogin.php">
+        <form name="login" method="post" onsubmit="return validateLogIn()" action="include/validateLogin.php">
           <fieldset>
             <legend>Log In</legend>
             <p>

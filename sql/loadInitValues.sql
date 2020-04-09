@@ -86,7 +86,7 @@ INSERT INTO comment(commentContent, storyID, userID)
 INSERT INTO comment(commentContent, storyID, userID)
   VALUES ("Just like girls do when they see you, they raaaan, ran so far awaaaaay!",6,6);
 INSERT INTO comment(commentContent, storyID, userID)
-  VALUES ("I am a girl you dumbass!",6,8);
+  VALUES ("I am a girl you dumbass!",6,4);
 INSERT INTO comment(commentContent, storyID, userID)
   VALUES ("Are you actually nuts? The White Album is a piece of art, nothing the Stones released ever came close.",7,9);
 INSERT INTO comment(commentContent, storyID, userID)

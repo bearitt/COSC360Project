@@ -17,19 +17,42 @@
         <a class="nav-link" href="features.php">Featured Stories</a>
       </li>
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
-        role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Account
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="login.php">Login</a>
-          <a class="dropdown-item" href="signup.php">Create an account</a>
-        </div>
-      </li>
+        <?php
+        session_start();
+        if(!isset($_SESSION['authenticatedUser'])){
+
+          echo '<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
+                role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Account
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  <a class="dropdown-item" href="login.php">Login</a>
+                  <a class="dropdown-item" href="signup.php">Create an account</a>
+                </div>
+              </li>';
+
+        }
+        else {
+                    echo '<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
+                    role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Welcome!
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                      <a class="dropdown-item" href="logout.php">Logout</a>
+                      <a class="dropdown-item" href="userinfo.php">Change Password</a>';
+
+                    if ($_SESSION['isAdmin'] == true){
+                      echo '<a class="dropdown-item" href="topicrequests.php">View Topics</a>';
+                    }
+                    echo '</div>
+                  </li>';
+        }
+         ?>
+
     </ul>
-    <form class="form-inline my-2 my-lg-0" method="get" action="storySearch.php">
+    <form class="form-inline my-2 my-lg-0" method="get" action="stories.php">
       <input class="form-control mr-sm-2" type="search" placeholder="Search"
-        aria-label="Search" name="storySearch">
+        aria-label="Search" name="topicSearch">
       <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
     </form>
   </div>
