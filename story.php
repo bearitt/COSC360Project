@@ -14,6 +14,8 @@
     <?php
       include 'include/navbar.php';
       include 'include/db_credentials.php';
+      $topicId = $_GET['id'];
+      $loggedIn = isset($_SESSION["authenticatedUser"]);
     ?>
 
 
@@ -24,7 +26,6 @@
       $pdo = openConnection();
       if(isset($_GET['id'])) {
         $counter = 1;
-        $topicId = $_GET['id'];
         $SQL = "SELECT * FROM story WHERE storyID = ?";
         $stmt = $pdo->prepare($SQL);
         $stmt->execute([$topicId]);
@@ -86,8 +87,6 @@
         try{
           $pdo = openConnection();
           if(isset($_GET['id'])) {
-            $counter = 1;
-            $topicId = $_GET['id'];
             $SQL = "SELECT * FROM comment c
              JOIN profile p ON c.userID=p.userID
              WHERE storyID = ?";
@@ -111,16 +110,30 @@
         ?>
       </ul>
       <div class="text-enter-container login">
-        <form name="comment" method="post" action="http://www.randyconnolly.com/tests/process.php">
+        <form name="comment" method="post" action="story.php?id=<?php echo $topicId;?>">
           <fieldset>
             <legend>Comment</legend>
             <p>
               <label>Username</label>
-              <input class="form-control" type="text" name="username" placeholder="Login to comment" readonly>
+              <input class="form-control" type="text" name="username"
+              <?php
+                if($loggedIn) {
+                  echo "placeholder=\"".$_SESSION['authenticatedUser']."\"";
+                } else {
+                  echo "placeholder=\"Login to comment\"";
+                }
+              ?> readonly>
             </p>
             <p>
               <textarea class="form-control" name="userComment" rows="5" id="userComment"
-                placeholder="Login to comment" readonly></textarea>
+                <?php
+                  if($loggedIn) {
+                    echo "placeholder=\"Enter your comment here\"";
+                  }else {
+                    echo "placeholder=\"Login to comment\" readonly";
+                  }
+                ?>
+                ></textarea>
             </p>
             <p><input type="submit"></p>
           </fieldset>
