@@ -12,7 +12,7 @@
   </head>
     <body>
       <?php
-        include 'navbar.php';
+        include 'include/navbar.php';
       ?>
 
       <div class="jumbotron jumbotron-fluid">
@@ -65,7 +65,7 @@
     </div>
 
     <?php
-      include 'footer.php';
+      include 'include/footer.php';
     ?>
       <!--Signup validation-->
       <script src="js/validate.js"></script>
