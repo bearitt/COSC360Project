@@ -12,7 +12,7 @@
   </head>
   <body>
     <?php
-      include 'navbar.php';
+      include 'include/navbar.php';
     ?>
 
 
@@ -96,7 +96,7 @@
   </div>
 </div>
 <?php
-  include 'footer.php';
+  include 'include/footer.php';
 ?>
 
     <!-- Bootstrap js dependencies -->

@@ -38,7 +38,7 @@
 		                if ($retStr != null){
                       $_SESSION["loginMessage"] = null;
      	                $_SESSION["authenticatedUser"] = $user;
-                      
+
 		                  }
 		                    else
 		                      $_SESSION["loginMessage"] = "Could not connect to the system using that username/password.";

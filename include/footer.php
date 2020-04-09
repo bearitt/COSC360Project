@@ -7,7 +7,17 @@
       <div class="col-sm-3">
       </div>
       <div class="col-sm-3">
-        <a class="btn btn-secondary btn-sm" href="admin.php" role="button">Login for admin</a>
+        <?php
+        
+        if(!isset($_SESSION['authenticatedUser'])){
+          echo '<a class="btn btn-secondary btn-sm" href="login.php" role="button">Login</a>';
+        }
+        else{
+          echo '<a class="btn btn-secondary btn-sm" href="logout.php" role="button">Logout</a>';
+        }
+
+         ?>
+
       </div>
     </div>
   </div>

@@ -12,7 +12,7 @@
   </head>
   <body>
     <?php
-      include 'navbar.php';
+      include 'include/navbar.php';
     ?>
 
 <div class="jumbotron jumbotron-fluid">
@@ -20,8 +20,9 @@
     <h1 class="display-4">Log In</h1>
     <p class="lead">Log in to an existing account</p>
     <?php
+
       if(isset($SESSION['loginMessage']))
-        echo ("<p>" . $_SESSION['loginMessage'] . "</p>");
+        echo ("<p> class=\"lead\"" . $_SESSION['loginMessage'] . "</p>");
      ?>
   </div>
 </div>
@@ -53,7 +54,7 @@
 </div>
 
 <?php
-  include 'footer.php';
+  include 'include/footer.php';
 ?>
     <!--Login validation -->
     <script src="js/validate.js"></script>

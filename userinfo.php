@@ -12,7 +12,7 @@
   </head>
   <body>
     <?php
-      include 'navbar.php';
+      include 'include/navbar.php';
     ?>
 
 
@@ -35,23 +35,11 @@
               <input type="text" name="username" placeholder="this_is_a_real_username">
             </p>
             <p>
-              <label>First Name</label>
-              <input type="text" name="firstName" placeholder="Mary"/>
-            </p>
-            <p>
-              <label>Last Name</label>
-              <input type="text" name="lastName" placeholder="Hadalittlelamb"/>
-            </p>
-            <p>
-              <label>Email Address</label>
-              <input type="text" name="email" placeholder="fleeceaswhiteas@snow.ca"/>
-            </p>
-            <p>
-              <label>Password</label>
+              <label>New Password</label>
               <input type="password" name="password" placeholder="***********">
             </p>
             <p>
-              <label>Confirm Password</label>
+              <label>Confirm New Password</label>
               <input type="password" name="passwordConfirmed" placeholder="***********">
             </p>
             <p><input type="submit"></p>
@@ -62,7 +50,7 @@
   </div>
 </div>
 <?php
-  include 'footer.php';
+  include 'include/footer.php';
 ?>
     <!--JS validation-->
     <script src="js/validate.js"></script>

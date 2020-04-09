@@ -5,27 +5,6 @@ function validateSignUp() {
     alert("Name must be filled out");
     return false;
   }
-  var firstName = document.forms["signup"]["firstName"].value;
-  if (firstName.length == 0){
-    alert("First name must be filled out");
-    return false;
-  }
-  var lastName = document.forms["signup"]["lastName"].value;
-  if (lastName.length == 0){
-    alert("Last name must be filled out");
-    return false;
-  }
-  var email = document.forms["signup"]["email"].value;
-  if (email.length == 0){
-    alert("Email must be filled out");
-    return false;
-  }
-  var at = /[a-z,A-Z,0-9,-,_,.,!,#,$,%,&,',*,+,-,/,=,?,^,_,`,{,|,},~][@][a-z,A-Z,0-9][.][a-z,A-Z]/;
-  var conseqDots = /[.]{2}/;
-  if (!at.test(email) || conseqDots.test(email)){
-    alert("Invalid email address");
-    return false;
-  }
   var pass = document.forms["signup"]["password"].value;
   if (pass.length == 0){
     alert("Password must be filled out");
