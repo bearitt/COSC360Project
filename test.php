@@ -1,18 +1,7 @@
 <?php
-  include 'include/db_credentials.php';
-
-  try{
-    $pdo = openConnection();
-  } catch(PDOException $e) {
-    die($e->getMessage());
-  }
-  $SQL = "SELECT * FROM topic";
-  $result = $pdo->query($SQL);
-
-  while($row = $result->fetch()) {
-    echo "what up dog?";
-    echo "<p>
-    Description: ".$row['topicDesc']."
-    </p>";
-  }
+  session_start();
+  if(isset($_SESSION['authenticatedUser']))
+    echo "<h1>".$_SESSION['authenticatedUser']."</h1>";
+  else
+    echo "<h1>No dice bro</h1>";
 ?>

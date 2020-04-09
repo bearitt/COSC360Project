@@ -14,7 +14,8 @@
     <?php
       include 'include/navbar.php';
       include 'include/db_credentials.php';
-      $topicId = $_GET['id'];
+      $storyId = $_GET['id'];
+      session_start();
       $loggedIn = isset($_SESSION["authenticatedUser"]);
     ?>
 
@@ -28,7 +29,7 @@
         $counter = 1;
         $SQL = "SELECT * FROM story WHERE storyID = ?";
         $stmt = $pdo->prepare($SQL);
-        $stmt->execute([$topicId]);
+        $stmt->execute([$storyId]);
         while($row = $stmt->fetch()) {
           echo "
             <h1 class=\"display-4\">".$row['storyName']."</h1>
@@ -41,6 +42,21 @@
       closeConnection($pdo);
     } catch(PDOException $e) {
       die($e->getMessage());
+    }
+    //now to check if a user has submitted a comment
+    if(isset($_POST['userComment'])) {
+        echo "<p class=\"lead\">Your comment has been submitted!</p>";
+        try{
+          $pdo = openConnection();
+          $sql = "INSERT INTO comment(commentContent, storyID, userID)
+            VALUES( ?,?,
+            (SELECT userID FROM profile WHERE userName=?))";
+          $stmt = $pdo->prepare($sql);
+          $stmt->execute([$_POST['userComment'],$storyId,$_SESSION['authenticatedUser']]);
+            //".$_POST['userComment']."\"    ".$storyId."       \"".$_SESSION['authenticatedUser']."\"
+        } catch(PDOException $e) {
+          die($e->getMessage());
+        }
     }
     ?>
   </div>
@@ -56,12 +72,11 @@
           $pdo = openConnection();
           if(isset($_GET['id'])) {
             $counter = 1;
-            $topicId = $_GET['id'];
             $SQL = "SELECT * FROM story s
              JOIN profile p ON s.userID=p.userID
              WHERE storyID = ?";
             $stmt = $pdo->prepare($SQL);
-            $stmt->execute([$topicId]);
+            $stmt->execute([$storyId]);
             while($row = $stmt->fetch()) {
               echo "
               <li class=\"list-group-item active\">
@@ -91,7 +106,7 @@
              JOIN profile p ON c.userID=p.userID
              WHERE storyID = ?";
             $stmt = $pdo->prepare($SQL);
-            $stmt->execute([$topicId]);
+            $stmt->execute([$storyId]);
             while($row = $stmt->fetch()) {
               echo "
               <li class=\"list-group-item list-group-item-secondary\">
@@ -110,14 +125,13 @@
         ?>
       </ul>
       <div class="text-enter-container login">
-        <form name="comment" method="post" action="story.php?id=<?php echo $topicId;?>">
+        <form name="comment" method="post" action="story.php?id=<?php echo $storyId;?>">
           <fieldset>
             <legend>Comment</legend>
             <p>
               <label>Username</label>
               <input class="form-control" type="text" name="username"
               <?php
-                session_start();
                 if($loggedIn) {
                   echo "placeholder=\"".$_SESSION['authenticatedUser']."\"";
                 } else {
