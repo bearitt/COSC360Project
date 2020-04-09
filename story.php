@@ -26,7 +26,6 @@
     try{
       $pdo = openConnection();
       if(isset($_GET['id'])) {
-        $counter = 1;
         $SQL = "SELECT * FROM story WHERE storyID = ?";
         $stmt = $pdo->prepare($SQL);
         $stmt->execute([$storyId]);
@@ -71,7 +70,6 @@
         try{
           $pdo = openConnection();
           if(isset($_GET['id'])) {
-            $counter = 1;
             $SQL = "SELECT * FROM story s
              JOIN profile p ON s.userID=p.userID
              WHERE storyID = ?";

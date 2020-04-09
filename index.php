@@ -29,57 +29,51 @@
     <div class="col-sm-9">
       <!--Featured stories -->
       <h2 class="featured">Featured stories</h2>
-      <div class="card">
-        <div class="card-header">
-          Story 1
-        </div>
-        <div class="card-body">
-          <h5 class="card-title">Very interesting story</h5>
-          <p class="card-text">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-          </p>
-          <a href="story.php" class="btn btn-primary">Visit story</a>
-        </div>
-      </div>
+      <?php
+        try {
+          //get number of stories
+          $pdo = openConnection();
+          $sql = "SELECT COUNT(*) FROM story";
+          $result = $pdo->query($sql);
+          $storyCount = 0;
+          while($row = $result->fetch()) {
+            $storyCount = $row['COUNT(*)'];
+          }
+          closeConnection($pdo);
+          //print four random "Featured" stories
+          $pdo = openConnection();
+          $counter = 1;
+          $SQL = "SELECT * FROM story WHERE storyID = ?";
+          $stmt = $pdo->prepare($SQL);
+          $publishedStories = array();
+          $nextStory = -1;
+          for($i=0;$i<5;++$i) {
+            while(in_array($nextStory, $publishedStories))
+              $nextStory = rand(1,$storyCount);
+            array_push($publishedStories,$nextStory);
+            $stmt->execute([$nextStory]);
+            while($row = $stmt->fetch()) {
+              echo "
+              <div class=\"card\">
+                <div class=\"card-header\">
+                  Story ".$counter++."
+                </div>
+                <div class=\"card-body\">
+                  <h5 class=\"card-title\">".$row['storyName']."</h5>
+                  <p class=\"card-text\">
+                    ".$row['storyContent']."
+                  </p>
+                  <a href=\"story.php?id=".$row['storyID']."\" class=\"btn btn-primary\">Visit story</a>
+                </div>
+              </div>
+              ";
+            }
+          }
+        } catch(PDOException $e){
+          die($e->getMessage());
+        }
+      ?>
 
-      <div class="card">
-        <div class="card-header">
-          Story 2
-        </div>
-        <div class="card-body">
-          <h5 class="card-title">Very interesting story</h5>
-          <p class="card-text">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-          </p>
-          <a href="story.php" class="btn btn-primary">Visit story</a>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-header">
-          Story 3
-        </div>
-        <div class="card-body">
-          <h5 class="card-title">Very interesting story</h5>
-          <p class="card-text">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-          </p>
-          <a href="story.php" class="btn btn-primary">Visit story</a>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-header">
-          Story 4
-        </div>
-        <div class="card-body">
-          <h5 class="card-title">Very interesting story</h5>
-          <p class="card-text">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-          </p>
-          <a href="story.php" class="btn btn-primary">Visit story</a>
-        </div>
-      </div>
 
     </div>
     <div class="col-sm-3">

@@ -28,8 +28,6 @@
   <div class="row">
     <div class="col-sm-9">
 <!-- Start search stuff -->
-
-
 <form method="get" action="listprod.php" class="form-inline">
 				<div class="form-group">
 					<div class="col-xs-12 col-md-4">
@@ -49,8 +47,6 @@
 		<br>
 
 <?php
-	//Get product name to search for
-	//get product name if search is used
 	$name = "";
 	$hasParameter = false;
 	if (isset($_GET['storySearch'])){
@@ -97,24 +93,6 @@
 
 ?>
 <!-- End search stuff -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     </div>
     <div class="col-sm-3">
