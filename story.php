@@ -13,13 +13,35 @@
   <body>
     <?php
       include 'include/navbar.php';
+      include 'include/db_credentials.php';
     ?>
 
 
 <div class="jumbotron jumbotron-fluid">
   <div class="container">
-    <h1 class="display-4">Super interesting story</h1>
-    <p class="lead">A story about the time something really interesting happened</p>
+    <?php
+    try{
+      $pdo = openConnection();
+      if(isset($_GET['id'])) {
+        $counter = 1;
+        $topicId = $_GET['id'];
+        $SQL = "SELECT * FROM story WHERE storyID = ?";
+        $stmt = $pdo->prepare($SQL);
+        $stmt->execute([$topicId]);
+        while($row = $stmt->fetch()) {
+          echo "
+            <h1 class=\"display-4\">".$row['storyName']."</h1>
+          ";
+        }
+      } else {
+        echo "<h1 class=\"display-4\">Not a story!</h1>";
+        echo "<p class=\"lead\">How did you get here? This isn't supposed to happen... Go back home and try again!</p>";
+      }
+      closeConnection($pdo);
+    } catch(PDOException $e) {
+      die($e->getMessage());
+    }
+    ?>
   </div>
 </div>
 
@@ -28,66 +50,65 @@
     <div class="col-sm-9">
       <!--Featured stories -->
       <ul class="list-group">
-          <li class="list-group-item active">
-              This is the title of the super awesome story
-          </li>
-          <li class="list-group-item">
-            <small class="username">user: interesting_person</small>
-            <p>
-              This one time I did a thing. It was super cool and interesting and I want
-              to share it with the world on the internet via this really cool forum.
-              I went to a place and did some things and probably met some people
-              and they were just as interesting as I am! I want to do more things like
-              this in the future, interesting things with interesting people. AND
-              THE FOOD! Wow, it was delicious. Something something tacos, something
-              something cats, memes and hashtags. #woke #blessed #toomuchtimeonmyhands
-            </p>
-          </li>
-          <li class="list-group-item list-group-item-secondary">
-            <small class="username">user: another_interesting_person</small>
-            <p>
-              That's so cool that you did a thing! I also did a thing, it
-              was maybe as cool as your thing but I don't really know. If you're
-              ever in the city where I live, we should do a cool and interesting thing
-              together!
-            </p>
-          </li>
-          <li class="list-group-item list-group-item-secondary">
-            <small class="username">user: hippest_hipster</small>
-            <p>
-              That's so dumb! No one likes interesting things any more. I liked
-              interesting things way before everyone else liked interesting things,
-              so that automatically makes me more cool and interesting than everyone
-              else.
-            </p>
-          </li>
-          <li class="list-group-item list-group-item-secondary">
-            <small class="username">user: USER BANNED</small>
-            <p>
-              ********** <small>[USER BANNED]</small>
-            </p>
-          </li>
-          <li class="list-group-item list-group-item-secondary">
-            <small class="username">user: SJW98</small>
-            <p>
-              Can we just talk about how interesting things are hurtful to those
-              who can't do interesting things? I'm just trying to call out our
-              privilege, because as upper middle class citizens, it's easy for
-              us to talk about interesting things, but not everyone in the world
-              is able to do interesting things like we can do interesting things.
-              Just check your privilege and be a little more sensitive the next
-              time you're talking about interesting things and remember that not
-              everyone can do interesting things.
-            </p>
-          </li>
-          <li class="list-group-item list-group-item-secondary">
-            <small class="username">user: a_frog_for_some_reason</small>
-            <p>
-              Liberal snowflake Soviet Russian anti-people person! Why don't you
-              go and do something not interesting if you can't listen to my alt-right
-              libertarian things? Make things interesting again!
-            </p>
-          </li>
+        <?php
+        try{
+          $pdo = openConnection();
+          if(isset($_GET['id'])) {
+            $counter = 1;
+            $topicId = $_GET['id'];
+            $SQL = "SELECT * FROM story s
+             JOIN profile p ON s.userID=p.userID
+             WHERE storyID = ?";
+            $stmt = $pdo->prepare($SQL);
+            $stmt->execute([$topicId]);
+            while($row = $stmt->fetch()) {
+              echo "
+              <li class=\"list-group-item active\">
+                  <strong>Author: </strong>".$row['userName']."
+              </li>
+              <li class=\"list-group-item\">
+                <p>
+                  ".$row['storyContent']."
+                </p>
+              </li>
+              ";
+            }
+          } else {
+            echo "<li class=\"list-group-item active\">
+                <strong>Seriously, just go home</strong>
+            </li>";
+            }
+          closeConnection($pdo);
+        } catch(PDOException $e) {
+          die($e->getMessage());
+        }
+          //now for user comments
+        try{
+          $pdo = openConnection();
+          if(isset($_GET['id'])) {
+            $counter = 1;
+            $topicId = $_GET['id'];
+            $SQL = "SELECT * FROM comment c
+             JOIN profile p ON c.userID=p.userID
+             WHERE storyID = ?";
+            $stmt = $pdo->prepare($SQL);
+            $stmt->execute([$topicId]);
+            while($row = $stmt->fetch()) {
+              echo "
+              <li class=\"list-group-item list-group-item-secondary\">
+                <small class=\"username\">user: ".$row['userName']."</small>
+                <p>
+                  ".$row['commentContent']."
+                </p>
+              </li>
+              ";
+            }
+          }
+          closeConnection($pdo);
+        } catch(PDOException $e) {
+          die($e->getMessage());
+        }
+        ?>
       </ul>
       <div class="text-enter-container login">
         <form name="comment" method="post" action="http://www.randyconnolly.com/tests/process.php">
@@ -111,10 +132,7 @@
       <div class="sticky-top sidebar-right">
         <div class="col-sm-3">
           <h2>Topics</h2>
-          <a class="btn btn-secondary btn-lg" href="topic.php" role="button">Sports</a>
-          <a class="btn btn-secondary btn-lg" href="topic.php" role="button">Music</a>
-          <a class="btn btn-secondary btn-lg" href="topic.php" role="button">Video Games</a>
-          <a class="btn btn-secondary btn-lg" href="topic.php" role="button">Wine</a>
+          <?php include 'include/topicSidebar.php'; ?>
         </div>
       </div>
     </div>

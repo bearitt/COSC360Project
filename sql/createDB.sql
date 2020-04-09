@@ -15,10 +15,11 @@ CREATE TABLE topic (
   topicName VARCHAR(255),
   topicPicture VARCHAR(255),
   topicDesc TEXT,
+  isApproved BIT,
   userID INT,
 
   FOREIGN KEY (userID) REFERENCES profile(userID)
-    ON DELETE SET NULL
+    ON DELETE CASCADE
 );
 
 CREATE TABLE story (
@@ -29,9 +30,9 @@ CREATE TABLE story (
   userID INT,
 
   FOREIGN KEY (topicID) REFERENCES topic(topicID)
-    ON DELETE SET NULL,
+    ON DELETE CASCADE,
   FOREIGN KEY (userID) REFERENCES profile(userID)
-    ON DELETE SET NULL
+    ON DELETE CASCADE
 );
 
 CREATE TABLE comment (
@@ -41,7 +42,7 @@ CREATE TABLE comment (
   userID INT,
 
   FOREIGN KEY (userID) REFERENCES profile(userID)
-    ON DELETE SET NULL,
+    ON DELETE CASCADE,
   FOREIGN KEY (storyID) REFERENCES story(storyID)
-    ON DELETE SET NULL
+    ON DELETE CASCADE
 );

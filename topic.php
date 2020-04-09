@@ -13,13 +13,36 @@
   <body>
     <?php
       include 'include/navbar.php';
+      include 'include/db_credentials.php';
     ?>
 
 
 <div class="jumbotron jumbotron-fluid">
   <div class="container">
-    <h1 class="display-4">Wine topic</h1>
-    <p class="lead">This is an example of what a topic page would look like</p>
+    <?php
+    try{
+      $pdo = openConnection();
+      if(isset($_GET['id'])) {
+        $counter = 1;
+        $topicId = $_GET['id'];
+        $SQL = "SELECT * FROM topic WHERE topicID = ?";
+        $stmt = $pdo->prepare($SQL);
+        $stmt->execute([$topicId]);
+        while($row = $stmt->fetch()) {
+          echo "
+          <h1 class=\"display-4\">".$row['topicName']."</h1>
+          <p class=\"lead\">".$row['topicDesc']."</p>
+          ";
+        }
+      } else {
+        echo "<h1 class=\"display-4\">Not a topic!</h1>";
+        echo "<p class=\"lead\">How did you get here? This isn't supposed to happen... Go back home and try again!</p>";
+      }
+      closeConnection($pdo);
+    } catch(PDOException $e) {
+      die($e->getMessage());
+    }
+    ?>
   </div>
 </div>
 
@@ -58,57 +81,39 @@
         </form>
       </div>
       <!--Featured stories -->
-      <div class="card">
-        <div class="card-header">
-          Story 1
-        </div>
-        <div class="card-body">
-          <h5 class="card-title">Very interesting story</h5>
-          <p class="card-text">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-          </p>
-          <a href="story.php" class="btn btn-primary">Visit story</a>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-header">
-          Story 2
-        </div>
-        <div class="card-body">
-          <h5 class="card-title">Very interesting story</h5>
-          <p class="card-text">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-          </p>
-          <a href="story.php" class="btn btn-primary">Visit story</a>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-header">
-          Story 3
-        </div>
-        <div class="card-body">
-          <h5 class="card-title">Very interesting story</h5>
-          <p class="card-text">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-          </p>
-          <a href="story.php" class="btn btn-primary">Visit story</a>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-header">
-          Story 4
-        </div>
-        <div class="card-body">
-          <h5 class="card-title">Very interesting story</h5>
-          <p class="card-text">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-          </p>
-          <a href="story.php" class="btn btn-primary">Visit story</a>
-        </div>
-      </div>
+      <?php
+      try{
+        $pdo = openConnection();
+        if(isset($_GET['id'])) {
+          $counter = 1;
+          $topicId = $_GET['id'];
+          $SQL = "SELECT * FROM story WHERE topicID = ?";
+          $stmt = $pdo->prepare($SQL);
+          $stmt->execute([$topicId]);
+          while($row = $stmt->fetch()) {
+            echo "
+            <div class=\"card\">
+              <div class=\"card-header\">
+                Story ".$counter++."
+              </div>
+              <div class=\"card-body\">
+                <h5 class=\"card-title\">".$row['storyName']."</h5>
+                <p class=\"card-text\">
+                  ".$row['storyContent']."
+                </p>
+                <a href=\"story.php?id=".$row['storyID']."\" class=\"btn btn-primary\">Visit story</a>
+              </div>
+            </div>
+            ";
+          }
+        } else {
+          echo "<h2>No stories found for that topic!</h2>";
+        }
+        closeConnection($pdo);
+      } catch(PDOException $e) {
+        die($e->getMessage());
+      }
+      ?>
 
     </div>
     <div class="col-sm-3">
@@ -116,10 +121,7 @@
       <div class="sticky-top">
         <div class="col-sm-3">
           <h2>Topics</h2>
-          <a class="btn btn-secondary btn-lg" href="#" role="button">Sports</a>
-          <a class="btn btn-secondary btn-lg" href="#" role="button">Music</a>
-          <a class="btn btn-secondary btn-lg" href="#" role="button">Video Games</a>
-          <a class="btn btn-secondary btn-lg" href="#" role="button">Wine</a>
+          <?php include 'include/topicSidebar.php'; ?>
         </div>
       </div>
     </div>

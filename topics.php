@@ -47,22 +47,13 @@
                 <div class=\"card-body text-center\">
                   <h5 class=\"card-title\">".$row['topicName']."</h5>
                   <p class=\"card-text\">".$row['topicDesc']."</p>
-                  <a href=\"topic.php\" class=\"btn btn-primary stretched-link\">Visit</a>
+                  <a href=\"topic.php?id=".$row['topicID']."\" class=\"btn btn-primary stretched-link\">Visit</a>
                 </div>
               </div>
               ";
             }
+            closeConnection($pdo);
           ?>
-          <!--
-          <div class="card">
-            <img class="card-img-top" src="images/pascal.jpg" alt="Pascal Siakam" />
-            <div class="card-body text-center">
-              <h5 class="card-title">Sports</h5>
-              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-              <a href="topic.php" class="btn btn-primary stretched-link">Visit</a>
-            </div>
-          </div>
--->
         </div>
       </div>
       <!--spacer right margin-->

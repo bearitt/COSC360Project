@@ -14,6 +14,5 @@
     echo "<p>
     Description: ".$row['topicDesc']."
     </p>";
-
   }
 ?>

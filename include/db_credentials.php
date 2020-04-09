@@ -16,7 +16,7 @@ function openConnection() {
   return $pdo;
 }
 
-function closeConnection() {
+function closeConnection($pdo) {
   $pdo=null;
 }
 ?>
