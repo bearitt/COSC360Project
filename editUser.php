@@ -4,7 +4,7 @@ session_start();
 $editCheck = editUser();
 
 if ($editCheck != null)
-echo '<p>Password succedfully changed! Go back to main page:</p>
+echo '<p>Password successfully changed! Go back to main page:</p>
       <a class="btn btn-secondary btn-sm" href="index.php" role="button">Return</a>'; //edit success
 else
 echo '<p>That user is not in the database! Go back to previous page:</p>

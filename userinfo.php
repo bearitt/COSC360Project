@@ -27,7 +27,7 @@
   <div class="row">
     <div class="col-sm-9">
       <div class="text-enter-container login">
-        <form name="signup" method="post" onsubmit="return validateSignUp()" action="editUser.php">
+        <form name="signup" method="post" onsubmit="return validateEdit()" action="editUser.php">
           <fieldset>
             <legend>Edit User Info</legend>
             <p>

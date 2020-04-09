@@ -21,8 +21,8 @@
     <p class="lead">Log in to an existing account</p>
     <?php
 
-      if(isset($SESSION['loginMessage']))
-        echo ("<p> class=\"lead\"" . $_SESSION['loginMessage'] . "</p>");
+      if(isset($_SESSION['loginMessage']))
+        echo ("<p>" . $_SESSION['loginMessage'] . "</p>");
      ?>
   </div>
 </div>

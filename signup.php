@@ -19,6 +19,11 @@
         <div class="container">
           <h1 class="display-4">Sign Up</h1>
           <p class="lead">Sign up for a new account</p>
+          <?php
+
+            if(isset($_SESSION['signupMessage']))
+              echo ("<p>" . $_SESSION['signupMessage'] . "</p>");
+           ?>
         </div>
       </div>
       <div class="container-fluid">
@@ -27,20 +32,12 @@
         </div>
         <div class="col-sm-6">
           <div class="text-enter-container login">
-            <form name="signup" method="post" onsubmit="return validateSignUp()" action="http://www.randyconnolly.com/tests/process.php">
+            <form name="signup" method="post" onsubmit="return validateSignUp()" action="enterNewUser.php">
               <fieldset>
                 <legend>Sign Up</legend>
                 <p>
                   <label>Username</label>
                   <input type="text" name="username">
-                </p>
-                <p>
-                  <label>First Name</label>
-                  <input type="text" name="firstName" />
-                </p>
-                <p>
-                  <label>Last Name</label>
-                  <input type="text" name="lastName" />
                 </p>
                 <p>
                   <label>Email Address</label>

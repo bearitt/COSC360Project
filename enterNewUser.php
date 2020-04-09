@@ -1,16 +1,17 @@
 <?php
   session_start();
-  $authenticatedUser = validateLogin();
+  $authenticatedUser = signInNewUser();
 
   if ($authenticatedUser != null)
-    header('Location: index.php'); //login success
+    header('Location: index.php'); //sign up success
   else
-    header('Location: login.php'); //failed login - back to login imagegrabscreen
+    header('Location: signup.php'); //failed sign up - back to sign up imagegrabscreen
 
-    function validateLogin()
+    function signInNewUser()
     {
       $user = $_POST["username"];
 	     $pw = $_POST["password"];
+       $email = $_POST["email"];
 		     $retStr = null;
 
          if ($user == null || $pw == null)
@@ -21,8 +22,20 @@
         include 'db_connection.php';
 
         try {
+
+          //create user
+          $sql = "INSERT INTO profile(userName, password, isAdmin, emailAddress)
+                  VALUES (?,?,0,?)";
+            $retStr = null;
+
+
+            $pdo = openConnection();
+              $stmt = $pdo->prepare($sql);
+                $stmt->execute([$user, $pw, $email]);
+
+            //confirm that user was created
 		        $sql = "SELECT * FROM profile WHERE userName = ? AND password = ?";
-		          $retStr = null;
+
 
               //get connection
               $pdo = openConnection();
@@ -36,14 +49,14 @@
                   }
 
 		                if ($retStr != null){
-                      $_SESSION["loginMessage"] = null;
+                      $_SESSION["signupMessage"] = null;
      	                $_SESSION["authenticatedUser"] = $user;
 
 		                  }
 		                    else
-		                      $_SESSION["loginMessage"] = "Could not connect to the system using that username/password.";
+		                      $_SESSION["signupMessage"] = "There was an error creating the profile.";
                         } catch(\PDOException $e) {
-                          $_SESSION["loginMessage"] = "There was an issue connecting to the database, try again.";
+                          $_SESSION["signupMessage"] = "There was an issue connecting to the database, try again.";
   	                     }
 		                       return $retStr;
 	                        }
