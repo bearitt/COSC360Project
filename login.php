@@ -20,7 +20,8 @@
     <h1 class="display-4">Log In</h1>
     <p class="lead">Log in to an existing account</p>
     <?php
-      if(isset($SESSION['loginMessage']))
+
+      if(isset($_SESSION['loginMessage']))
         echo ("<p>" . $_SESSION['loginMessage'] . "</p>");
      ?>
   </div>
