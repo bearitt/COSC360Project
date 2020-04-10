@@ -14,8 +14,7 @@
     <?php
       include 'include/navbar.php';
       include 'include/db_credentials.php';
-      $storyId = $_GET['id'];
-      session_start();
+      $storyId = $_GET['storyID'];
       $loggedIn = isset($_SESSION["authenticatedUser"]);
     ?>
 
@@ -25,13 +24,13 @@
       <?php
       try{
         $pdo = openConnection();
-        if(isset($_GET['id'])) {
+        if(isset($_GET['storyID'])) {
           $SQL = "SELECT * FROM story WHERE storyID = ?";
           $stmt = $pdo->prepare($SQL);
           $stmt->execute([$storyId]);
           while($row = $stmt->fetch()) {
             echo "
-              <h1 class=\"display-4\">".$row['storyName']."</h1>
+              <h1 class=\"display-4\">Edit story \"".$row['storyName']."\"</h1>
             ";
           }
         } else {
@@ -43,16 +42,14 @@
         die($e->getMessage());
       }
       //now to check if a user has submitted a comment
-      if(isset($_POST['userComment'])) {
-          echo "<p class=\"lead\">Your comment has been submitted!</p>";
+      if(isset($_POST['editStory']) && $_SESSION['isAdmin']) {
           try{
             $pdo = openConnection();
-            $sql = "INSERT INTO comment(commentContent, storyID, userID)
-              VALUES( ?,?,
-              (SELECT userID FROM profile WHERE userName=?))";
+            $sql = "UPDATE story SET storyContent = ? WHERE storyID = ?";
             $stmt = $pdo->prepare($sql);
-            $stmt->execute([$_POST['userComment'],$storyId,$_SESSION['authenticatedUser']]);
-              //".$_POST['userComment']."\"    ".$storyId."       \"".$_SESSION['authenticatedUser']."\"
+            $stmt->execute([$_POST['editStory'],$_GET['storyID']]);
+            closeConnection($pdo);
+            echo "<p class=\"lead\">Story successfully edited</p>";
           } catch(PDOException $e) {
             die($e->getMessage());
           }
@@ -69,13 +66,14 @@
         <?php
         try{
           $pdo = openConnection();
-          if(isset($_GET['id'])) {
+          if(isset($_GET['storyID'])) {
             $SQL = "SELECT * FROM story s
              JOIN profile p ON s.userID=p.userID
              WHERE storyID = ?";
             $stmt = $pdo->prepare($SQL);
             $stmt->execute([$storyId]);
             while($row = $stmt->fetch()) {
+              $storyContent = $row['storyContent'];
               echo "
               <li class=\"list-group-item active\">
                   <img src=\"".$row['profilePhoto']."\" class=\"photo-profile\" />&nbsp;&nbsp;<strong>Author: </strong>".$row['userName']."
@@ -96,59 +94,18 @@
         } catch(PDOException $e) {
           die($e->getMessage());
         }
-          //now for user comments
-        try{
-          $pdo = openConnection();
-          if(isset($_GET['id'])) {
-            $SQL = "SELECT * FROM comment c
-             JOIN profile p ON c.userID=p.userID
-             WHERE storyID = ?";
-            $stmt = $pdo->prepare($SQL);
-            $stmt->execute([$storyId]);
-            while($row = $stmt->fetch()) {
-              echo "
-              <li class=\"list-group-item list-group-item-secondary\">
-                <img src=\"".$row['profilePhoto']."\" class=\"photo-profile\" />&nbsp;&nbsp;<small class=\"username\">user: ".$row['userName']."</small>
-                <p>
-                  ".$row['commentContent']."
-                </p>
-              </li>
-              ";
-            }
-          }
-          closeConnection($pdo);
-        } catch(PDOException $e) {
-          die($e->getMessage());
-        }
         ?>
       </ul>
       <div class="text-enter-container login">
-        <form name="comment" method="post" action="story.php?id=<?php echo $storyId;?>">
+        <form name="comment" method="post" action="editstory.php?storyID=<?php echo $storyId;?>">
           <fieldset>
-            <legend>Comment</legend>
+            <legend>Edit story</legend>
             <p>
-              <label>Username</label>
-              <input class="form-control" type="text" name="username"
-              <?php
-                if($loggedIn) {
-                  echo "placeholder=\"".$_SESSION['authenticatedUser']."\"";
-                } else {
-                  echo "placeholder=\"Login to comment\"";
-                }
-              ?> readonly>
+              <textarea class="form-control" name="editStory" rows="5" id="userComment"><?php
+                echo $storyContent;
+              ?></textarea>
             </p>
-            <p>
-              <textarea class="form-control" name="userComment" rows="5" id="userComment"
-                <?php
-                  if($loggedIn) {
-                    echo "placeholder=\"Enter your comment here\"";
-                  }else {
-                    echo "placeholder=\"Login to comment\" readonly";
-                  }
-                ?>
-                ></textarea>
-            </p>
-            <button class="btn btn-primary my-2 my-sm-0" type="submit">Submit comment</button>
+            <button class="btn btn-primary my-2 my-sm-0" type="submit">Edit story</button>
           </fieldset>
         </form>
       </div>

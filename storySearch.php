@@ -15,6 +15,18 @@
       include 'include/navbar.php';
       include 'include/db_credentials.php';
       $searchTerm = $_GET['storySearch'];
+
+      if(isset($_GET['delete']) && isset($_GET['storyID']) && $_SESSION['isAdmin']) {
+        try{
+          $pdo = openConnection();
+          $sql = "DELETE FROM story WHERE storyID = ?";
+          $stmt = $pdo->prepare($sql);
+    			$stmt->execute([$_GET['storyID']]);
+          closeConnection($pdo);
+        }catch(PDOException $e) {
+          die($e->getMessage());
+        }
+      }
     ?>
 
 
@@ -78,12 +90,19 @@
 		}
 		//table header
 		echo("<table class=\"table table-hover table-responsive-md table-borderless table-striped table-search\"><thead><tr>");
-		echo "<th>Story Name</th><th>Author</th><th>Topic</th></tr></thead>";
+		echo "<th>Story Name</th><th>Author</th><th>Topic</th>";
+    if($_SESSION['isAdmin'])
+      echo "<th>Edit Post</th><th>Delete post</th>";
+    echo "</tr></thead>";
 		while ($row = $stmt->fetch()) {
 			echo("<tr>");
 			echo("<td><a href=\"story.php?id=" . $row['storyID']."\">".$row['storyName']."</a></td>");
 			echo("<td>".$row['userName']."</td>");
-			echo("<td>".$row['topicName']."</td></tr>");
+			echo("<td>".$row['topicName']."</td>");
+      if($_SESSION['isAdmin'])
+        echo "<td><a href=\"editstory.php?storyID=".$row['storyID']."\" class=\"btn btn-secondary\" role=\"button\">Edit story</a></td>
+        <td><a href=\"storySearch.php?delete=1&storyID=".$row['storyID']."\" class=\"btn btn-danger\" role=\"button\">Delete story</a></td>";
+      echo "</tr>";
 		}
 		echo("</table>");
     closeConnection($pdo);
