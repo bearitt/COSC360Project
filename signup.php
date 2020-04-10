@@ -37,21 +37,21 @@
                 <legend>Sign Up</legend>
                 <p>
                   <label>Username</label>
-                  <input type="text" name="username">
+                  <input class="form-control" type="text" name="username">
                 </p>
                 <p>
                   <label>Email Address</label>
-                  <input type="text" name="email" />
+                  <input class="form-control" type="text" name="email" />
                 </p>
                 <p>
                   <label>Password</label>
-                  <input type="password" name="password">
+                  <input class="form-control" type="password" name="password">
                 </p>
                 <p>
                   <label>Confirm Password</label>
-                  <input type="password" name="passwordConfirmed">
+                  <input class="form-control" type="password" name="passwordConfirmed">
                 </p>
-                <p><input type="submit"></p>
+                <button class="btn btn-primary my-2 my-sm-0" type="submit">Search</button>
               </fieldset>
             </form>
           </div>

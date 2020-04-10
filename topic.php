@@ -13,10 +13,8 @@
   <body>
     <?php
       include 'include/navbar.php';
-<<<<<<< HEAD
       include 'include/db_credentials.php';
-=======
->>>>>>> jake
+
     ?>
 
 

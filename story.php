@@ -19,48 +19,48 @@
       $loggedIn = isset($_SESSION["authenticatedUser"]);
     ?>
 
-
-<div class="jumbotron jumbotron-fluid">
-  <div class="container">
-    <?php
-    try{
-      $pdo = openConnection();
-      if(isset($_GET['id'])) {
-        $SQL = "SELECT * FROM story WHERE storyID = ?";
-        $stmt = $pdo->prepare($SQL);
-        $stmt->execute([$storyId]);
-        while($row = $stmt->fetch()) {
-          echo "
-            <h1 class=\"display-4\">".$row['storyName']."</h1>
-          ";
+<div class="row">
+  <div class="jumbotron jumbotron-fluid" style="margin-top:0em;">
+    <div class="container">
+      <?php
+      try{
+        $pdo = openConnection();
+        if(isset($_GET['id'])) {
+          $SQL = "SELECT * FROM story WHERE storyID = ?";
+          $stmt = $pdo->prepare($SQL);
+          $stmt->execute([$storyId]);
+          while($row = $stmt->fetch()) {
+            echo "
+              <h1 class=\"display-4\">".$row['storyName']."</h1>
+            ";
+          }
+        } else {
+          echo "<h1 class=\"display-4\">Not a story!</h1>";
+          echo "<p class=\"lead\">How did you get here? This isn't supposed to happen... Go back home and try again!</p>";
         }
-      } else {
-        echo "<h1 class=\"display-4\">Not a story!</h1>";
-        echo "<p class=\"lead\">How did you get here? This isn't supposed to happen... Go back home and try again!</p>";
+        closeConnection($pdo);
+      } catch(PDOException $e) {
+        die($e->getMessage());
       }
-      closeConnection($pdo);
-    } catch(PDOException $e) {
-      die($e->getMessage());
-    }
-    //now to check if a user has submitted a comment
-    if(isset($_POST['userComment'])) {
-        echo "<p class=\"lead\">Your comment has been submitted!</p>";
-        try{
-          $pdo = openConnection();
-          $sql = "INSERT INTO comment(commentContent, storyID, userID)
-            VALUES( ?,?,
-            (SELECT userID FROM profile WHERE userName=?))";
-          $stmt = $pdo->prepare($sql);
-          $stmt->execute([$_POST['userComment'],$storyId,$_SESSION['authenticatedUser']]);
-            //".$_POST['userComment']."\"    ".$storyId."       \"".$_SESSION['authenticatedUser']."\"
-        } catch(PDOException $e) {
-          die($e->getMessage());
-        }
-    }
-    ?>
+      //now to check if a user has submitted a comment
+      if(isset($_POST['userComment'])) {
+          echo "<p class=\"lead\">Your comment has been submitted!</p>";
+          try{
+            $pdo = openConnection();
+            $sql = "INSERT INTO comment(commentContent, storyID, userID)
+              VALUES( ?,?,
+              (SELECT userID FROM profile WHERE userName=?))";
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute([$_POST['userComment'],$storyId,$_SESSION['authenticatedUser']]);
+              //".$_POST['userComment']."\"    ".$storyId."       \"".$_SESSION['authenticatedUser']."\"
+          } catch(PDOException $e) {
+            die($e->getMessage());
+          }
+      }
+      ?>
+    </div>
   </div>
 </div>
-
 <div class="container">
   <div class="row">
     <div class="col-sm-9">
@@ -148,7 +148,7 @@
                 ?>
                 ></textarea>
             </p>
-            <p><input type="submit"></p>
+            <button class="btn btn-primary my-2 my-sm-0" type="submit">Search</button>
           </fieldset>
         </form>
       </div>

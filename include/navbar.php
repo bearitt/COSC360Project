@@ -39,7 +39,7 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                       <a class="dropdown-item" href="logout.php">Logout</a>
-                      <a class="dropdown-item" href="userinfo.php">Change Password</a>';
+                      <a class="dropdown-item" href="userinfo.php">Edit Profile</a>';
 
                     if ($_SESSION['isAdmin'] == true){
                       echo '<a class="dropdown-item" href="topicrequests.php">View Topics</a>';
