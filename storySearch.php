@@ -28,7 +28,7 @@
   <div class="row">
     <div class="col-sm-9">
 <!-- Start search stuff -->
-<form method="get" action="listprod.php" class="form-inline">
+<form method="get" action="storySearch.php" class="form-inline">
 				<div class="form-group">
 					<div class="col-xs-12 col-md-4">
 						<label class="sr-only" for="helpStory">Search for a story</label>

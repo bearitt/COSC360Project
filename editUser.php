@@ -3,12 +3,14 @@
 session_start();
 $editCheck = editUser();
 
-if ($editCheck != null)
-  echo '<p>Password successfully changed! Go back to main page:</p>
-      <a class="btn btn-secondary btn-sm" href="index.php" role="button">Return</a>'; //edit success
-else
-  echo '<p>That user is not in the database! Go back to previous page:</p>
-      <a class="btn btn-secondary btn-sm" href="userinfo.php" role="button">Return</a>'; //failed edit
+if ($editCheck != null){
+  $_SESSION['editMessage'] = "Profile updated successfully!";
+  header('Location: userinfo.php');
+} //edit success
+else {
+  $_SESSION['editMessage'] = "Error: profile not updated. Please try again!";
+  header('Location: userinfo.php');
+} //failed edit
 
 
 
@@ -17,22 +19,22 @@ function editUser(){
   $photo = $_FILES['photo']['tmp_name'];
   $email = $_POST['email'];
   $pw = $_POST["passwordConfirmed"];
-  echo "<p>
-  Username: ".$user."<br />
-  Photo name: ".$photo."<br />
-  Email: ".$email."<br />
-  Password: ".$pw."
-  </p>";
+  // echo "<p>
+  // Username: ".$user."<br />
+  // Photo name: ".$photo."<br />
+  // Email: ".$email."<br />
+  // Password: ".$pw."
+  // </p>";
   $retStr = null;
   $userIn = !($user == null || strlen($user) == 0);
   $photoIn = !($photo == null || strlen($photo) == 0);
   $emailIn = !($email == null || strlen($email) == 0);
   $pwIn = !($pw == null || strlen($pw) == 0);
 
-  if(!$userIn && !$photoIn && !$emailIn && !$pwIn)
-    echo "<p>
-     No changes made!
-    </p>";
+  // if(!$userIn && !$photoIn && !$emailIn && !$pwIn)
+  //   echo "<p>
+  //    No changes made!
+  //   </p>";
   include 'include/db_credentials.php';
 
   try {
@@ -76,11 +78,11 @@ function editUser(){
         array_push($change_values,$pw);
       }
       $sql = $sql. " WHERE userID = ?";
-      echo "<br />Sql: ".$sql;
-      echo "<br />User id: ". $retStr;
-      echo "<br />Array: ";
+      // echo "<br />Sql: ".$sql;
+      // echo "<br />User id: ". $retStr;
+      // echo "<br />Array: ";
       array_push($change_values,(int)$retStr);
-      print_r($change_values);
+      // print_r($change_values);
 
       $pdo = openConnection();
       $stmt = $pdo->prepare($sql);
@@ -90,7 +92,7 @@ function editUser(){
 
   }
   catch(PDOException $e) {
-    die($e->getMessage());
+    //die($e->getMessage());
   }
   return $retStr;
 

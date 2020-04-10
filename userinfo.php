@@ -35,6 +35,11 @@
       } catch(PDOException $e) {
         die($e->getMessage());
       }
+      if(isset($_SESSION['editMessage'])) {
+        echo "<br />".$_SESSION['editMessage'];
+        $_SESSION['editMessage'] = null;
+      }
+
       echo "</p>";
     ?>
 
