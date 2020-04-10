@@ -13,9 +13,6 @@
       <li class="nav-item">
         <a class="nav-link" href="topics.php">Topics</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="features.php">Featured Stories</a>
-      </li>
       <li class="nav-item dropdown">
         <?php
         session_start();
@@ -45,6 +42,7 @@
                     if ($_SESSION['isAdmin'] == true){
                       echo '<a class="dropdown-item" href="topicrequests.php">View Topics</a>';
                       echo '<a class="dropdown-item" href="usersearch.php">Search for users</a>';
+                      echo '<a class="dropdown-item" href="databaseinit.php">Reinitialize Database</a>';
                     }
                     echo '</div>
                   </li>';
