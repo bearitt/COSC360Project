@@ -8,7 +8,7 @@
       </div>
       <div class="col-sm-3">
         <?php
-        
+
         if(!isset($_SESSION['authenticatedUser'])){
           echo '<a class="btn btn-secondary btn-sm" href="login.php" role="button">Login</a>';
         }

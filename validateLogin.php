@@ -1,6 +1,7 @@
 <?php
   session_start();
   $authenticatedUser = validateLogin();
+  
 
   if ($authenticatedUser != null)
     header('Location: index.php'); //login success

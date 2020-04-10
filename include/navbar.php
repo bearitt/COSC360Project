@@ -28,6 +28,7 @@
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                   <a class="dropdown-item" href="login.php">Login</a>
                   <a class="dropdown-item" href="signup.php">Create an account</a>
+                  <a class="dropdown-item" href="recoverPassword.php">Recover password</a>
                 </div>
               </li>';
 
