@@ -19,8 +19,8 @@
 
 <div class="jumbotron jumbotron-fluid">
   <div class="container">
-    <h1 class="display-4">Forum name</h1>
-    <p class="lead">Welcome to the forum! blah blah blah</p>
+    <h1 class="display-4">The Forum</h1>
+    <p class="lead">Welcome to The Forum!</p>
   </div>
 </div>
 

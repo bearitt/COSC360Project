@@ -22,8 +22,11 @@
           <p class="lead">Have your password sent to your email</p>
           <?php
 
-            if(isset($_SESSION['recoverMessage']))
+            if(isset($_SESSION['recoverMessage'])){
               echo ("<p>" . $_SESSION['recoverMessage'] . "</p>");
+              $_SESSION['recoverMessage']=null;
+            }
+
            ?>
         </div>
       </div>

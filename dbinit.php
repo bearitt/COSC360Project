@@ -1,7 +1,7 @@
 <?php
   $success = dbinit();
   session_start();
-  if($success){
+  if($success&&$_SESSION['isAdmin']){
     $_SESSION['successMessage'] = "Database successfully reinitialized!";
     header('Location: databaseinit.php');
   } else{

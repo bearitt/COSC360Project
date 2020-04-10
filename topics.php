@@ -17,7 +17,7 @@
       <div class="jumbotron jumbotron-fluid">
         <div class="container">
           <h1 class="display-4">Topics</h1>
-          <p class="lead">This is a list of topics</p>
+          <p class="lead">Topics to get you started</p>
         </div>
       </div>
     </div>
