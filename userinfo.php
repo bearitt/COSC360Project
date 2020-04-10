@@ -92,7 +92,7 @@
               <label>Confirm New Password</label>
               <input class="form-control" type="password" name="passwordConfirmed" placeholder="***********">
             </p>
-            <button class="btn btn-primary my-2 my-sm-0" type="submit">Search</button>
+            <button class="btn btn-primary my-2 my-sm-0" type="submit">Update</button>
           </fieldset>
         </form>
       </div>

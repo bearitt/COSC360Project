@@ -15,6 +15,24 @@
       include 'include/navbar.php';
       include 'include/db_credentials.php';
 
+      if(isset($_POST['storyTitle']) && isset($_POST['storyContent'])) {
+        try {
+          $pdo = openConnection();
+          $sql = "SELECT userID FROM profile WHERE userName = ?";
+          $stmt = $pdo->prepare($sql);
+          $stmt->execute([$_SESSION['authenticatedUser']]);
+          while($row = $stmt->fetch()) {
+            $userID = $row['userID'];
+          }
+          $sql = "INSERT INTO story(storyName, storyContent, topicID, userID)
+           VALUES(?,?,?,?)";
+          $stmt = $pdo->prepare($sql);
+          $stmt->execute([$_POST['storyTitle'],$_POST['storyContent'],$_GET['id'],$userID]);
+          closeConnection($pdo);
+        } catch(PDOException $e) {
+          die($e->getMessage());
+        }
+      }
     ?>
 
 
@@ -51,8 +69,42 @@
     <div class="col-sm-9">
       <!--Sort bar -->
       <div class="text-enter-container sortbar">
-        <!--Change action when coding backend -->
-        <form class="form-inline" name="sortbar" method="post" action="topic.php">
+        <form name="sortbar" method="post" action="
+        <?php
+        if(isset($_SESSION['authenticatedUser']))
+          echo "topic.php?id=".$_GET['id'];
+        else
+          echo "#"
+        ?>
+        ">
+          <legend>Create a new story for this topic</legend>
+          <div class="form-group">
+            <label for="storyTitle" class="mr-sm-2">Your Story Title</label>
+            <input class="form-control" type="text" name="storyTitle"
+            <?php
+            if(isset($_SESSION['authenticatedUser']))
+              echo "placeholder=\"Your Story Title\"";
+            else
+              echo "placeholder=\"Login to comment\" readonly";
+            ?>
+            id="storyTitle">
+          </div>
+          <div class="form-group">
+            <label for="storyContent" class="mr-sm-2">Story content</label>
+            <textarea class="form-control" rows="5" name="storyContent"
+            <?php
+            if(isset($_SESSION['authenticatedUser']))
+              echo "placeholder=\"Tell us a story\"";
+            else
+              echo "placeholder=\"Login to comment\" readonly";
+            ?>
+            id="storyContent"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" onclick="return validateLogin()">Post story</button>
+        </form>
+
+        <!-- Sort bar not implemented in final project -->
+        <!-- <form class="form-inline" name="sortbar" method="post" action="topic.php">
           <legend>Sort stories</legend>
           <div class="form-group">
             <label for="lastPost" class="mr-sm-2">Last post</label>
@@ -78,7 +130,7 @@
             <button type="submit" class="btn btn-primary" onclick="return validateLogin()">Submit</button>
           </div>
 
-        </form>
+        </form> -->
       </div>
       <!--Featured stories -->
       <?php

@@ -43,6 +43,7 @@
 
                     if ($_SESSION['isAdmin'] == true){
                       echo '<a class="dropdown-item" href="topicrequests.php">View Topics</a>';
+                      echo '<a class="dropdown-item" href="usersearch.php">Search for users</a>';
                     }
                     echo '</div>
                   </li>';

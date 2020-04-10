@@ -21,8 +21,11 @@
     <p class="lead">Log in to an existing account</p>
     <?php
 
-      if(isset($_SESSION['loginMessage']))
+      if(isset($_SESSION['loginMessage'])){
         echo ("<p>" . $_SESSION['loginMessage'] . "</p>");
+        $_SESSION["loginMessage"] = null;
+      }
+
      ?>
   </div>
 </div>
@@ -37,13 +40,13 @@
             <legend>Log In</legend>
             <p>
               <label>Username</label>
-              <input type="text" name="username" placeholder="Enter Username">
+              <input class="form-control" type="text" name="username" placeholder="Enter Username">
             </p>
             <p>
               <label>Password</label>
-              <input type="password" name="password" placeholder="*********">
+              <input class="form-control" type="password" name="password" placeholder="*********">
             </p>
-            <p><input type="submit"></p>
+            <button class="btn btn-primary my-2 my-sm-0" type="submit">Login</button>
           </fieldset>
         </form>
       </div>

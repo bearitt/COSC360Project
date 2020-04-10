@@ -6,11 +6,9 @@ DROP TABLE profile;
 CREATE TABLE profile (
   userID INT PRIMARY KEY AUTO_INCREMENT,
   userName VARCHAR(100),
-<<<<<<< HEAD
   emailAddress VARCHAR(100),
+  active BIT DEFAULT 1,
   profilePhoto VARCHAR(255),
-=======
->>>>>>> jake
   password VARCHAR(100),
   isAdmin BIT
 );
@@ -20,18 +18,11 @@ CREATE TABLE topic (
   topicName VARCHAR(255),
   topicPicture VARCHAR(255),
   topicDesc TEXT,
-<<<<<<< HEAD
   isApproved BIT,
   userID INT,
 
   FOREIGN KEY (userID) REFERENCES profile(userID)
     ON DELETE CASCADE
-=======
-  userID INT,
-
-  FOREIGN KEY (userID) REFERENCES profile(userID)
-    ON DELETE SET NULL
->>>>>>> jake
 );
 
 CREATE TABLE story (
@@ -42,15 +33,9 @@ CREATE TABLE story (
   userID INT,
 
   FOREIGN KEY (topicID) REFERENCES topic(topicID)
-<<<<<<< HEAD
     ON DELETE CASCADE,
   FOREIGN KEY (userID) REFERENCES profile(userID)
     ON DELETE CASCADE
-=======
-    ON DELETE SET NULL,
-  FOREIGN KEY (userID) REFERENCES profile(userID)
-    ON DELETE SET NULL
->>>>>>> jake
 );
 
 CREATE TABLE comment (
@@ -60,13 +45,7 @@ CREATE TABLE comment (
   userID INT,
 
   FOREIGN KEY (userID) REFERENCES profile(userID)
-<<<<<<< HEAD
     ON DELETE CASCADE,
   FOREIGN KEY (storyID) REFERENCES story(storyID)
     ON DELETE CASCADE
-=======
-    ON DELETE SET NULL,
-  FOREIGN KEY (storyID) REFERENCES story(storyID)
-    ON DELETE SET NULL
->>>>>>> jake
 );

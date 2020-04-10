@@ -12,30 +12,37 @@
       $user = $_POST["username"];
       $pw = $_POST["password"];
       $retStr = null;
+      $_SESSION['isAdmin'] = false;
 
       if ($user == null || $pw == null)
         return null;
       if ((strlen($user) == 0) || (strlen($pw) == 0))
         return null;
 
-      include 'db_credentials.php';
+      include 'db_connection.php';
 
       try {
         $sql = "SELECT * FROM profile WHERE userName = ? AND password = ?";
         $retStr = null;
-
         //get connection
         $pdo = openConnection();
         $stmt = $pdo->prepare($sql);
         $stmt->execute([$user, $pw]);
+        $ban=false;
         //result set if any results returned from query
         while($row = $stmt->fetch()) {
           $retStr = $row['userID'];
           if($row['isAdmin']==1)
-          $_SESSION['isAdmin'] = true;
+            $_SESSION['isAdmin'] = true;
+          if($row['active']!=1) {
+            $ban=true;
+            $retStr = null;
+            break;
+          }
         }
-
-        if ($retStr != null){
+        if($ban)
+          $_SESSION["loginMessage"] = "You are currently banned, please contact us for further information";
+        else if ($retStr != null && !$ban){
           $_SESSION["loginMessage"] = null;
           $_SESSION["authenticatedUser"] = $user;
         }
@@ -44,7 +51,7 @@
       } catch(\PDOException $e) {
         $_SESSION["loginMessage"] = "There was an issue connecting to the database, try again.";
       }
-        return $retStr;
+      return $retStr;
       }
 
 
